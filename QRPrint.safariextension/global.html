@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QRPrint</title>
+	<script type="text/javascript" charset="utf-8">
+	
+safari.application.addEventListener("command", performCommand, true);
+safari.application.addEventListener("validate", validateCommand, true);
+
+function performCommand(event)
+{
+    if (event.command === "qrPrintCurrentPage")
+    {
+		var currentURL = event.target.browserWindow.activeTab.url;
+		printqrcode(currentURL);       
+	}
+}
+
+function validateCommand(event)
+{
+    if (event.command === "qrPrintCurrentPage")
+    {
+        // Disable the button if there is no URL loaded in the tab.
+        event.target.disabled = !event.target.browserWindow.activeTab.url;
+    }
+}
+
+function printqrcode(url)
+{
+	var postURL = "http://localhost:5555/printqrcode";
+	var params = "url="+escape(url);
+	var http = new XMLHttpRequest();
+	
+	http.open("POST", postURL, true);
+	//Send the proper header information along with the request
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.setRequestHeader("Content-length", params.length);
+	http.setRequestHeader("Connection", "close");
+	
+	http.onreadystatechange = function() {//Call a function when the state changes.
+		if(http.readyState == 4 && http.status == 200) {
+			alert("QR Code printed.");
+		}
+	}
+	http.send(params);
+}
+
+</script>
+</head>
+<body>
+</body>
+</html>
