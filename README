@@ -1,0 +1,4 @@
+QRPrint is a Safari extension and a .Net server standalone application.
+
+It uses MessagingToolkit's QR Code open source library.
+Source code here : http://twit88.com/platform/projects/show/mt-qrcode
