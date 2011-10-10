@@ -45,9 +45,9 @@ namespace QRPrint
 				QueryHandler qh = new QueryHandler(context);
 				Console.WriteLine(qh.InspectContext());
 				
-				context.Response.StatusCode = (int)HttpStatusCode.OK;
 				byte[] response = Encoding.UTF8.GetBytes(qh.ProcessInfo());
 				
+				context.Response.StatusCode = qh.StatusCode;
 				context.Response.ContentLength64 = response.Length;
 				context.Response.ContentType = "text/xml; charset=UTF-8";
 				

@@ -34,7 +34,7 @@
 				<key>Palette Label</key>
 				<string>Print QR Code</string>
 				<key>Tool Tip</key>
-				<string>Prints page URL with a QR Code</string>
+				<string>Prints the current page URL with a QR Code</string>
 			</dict>
 		</array>
 	</dict>
@@ -44,7 +44,7 @@
 		<dict/>
 	</dict>
 	<key>Description</key>
-	<string>Prints page URL with a QR Code, needs QRPrint Application</string>
+	<string>Prints the current page URL with a QR Code, needs QRPrint Application</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>

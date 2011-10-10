@@ -6,7 +6,7 @@ namespace QRPrint
 {
 	public class Client
 	{
-		static string RestGet(string url)
+		static string Get(string url)
 		{
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
 			HttpWebResponse resp = (HttpWebResponse)req.GetResponse();

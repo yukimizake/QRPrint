@@ -12,6 +12,7 @@ namespace QRPrint
 {
 	public class QueryHandler
 	{	
+		public int StatusCode = 500; //Server Error by default
 		private XmlDocument _xmlResponse = new XmlDocument();
 		private XmlNode _docNode;
 		private HttpListenerContext	_context;
@@ -43,6 +44,7 @@ namespace QRPrint
 			case "printqrcode":
 				return PrintQRCode();
 			default:
+				StatusCode = 400;
 				return "";
 			}
 		}
@@ -65,6 +67,7 @@ namespace QRPrint
 					printer.LineFeed();
 					MainClass.printerHandler.isPrinting = false;
 					result = "1";
+					StatusCode = 200;
 				}
 			}
 			
@@ -123,6 +126,7 @@ namespace QRPrint
 					MainClass.printerHandler.isPrinting = false;
 					
 					result = "1";
+					StatusCode = 200;
 				}
 			}
 			
@@ -175,6 +179,7 @@ namespace QRPrint
 			}
 			
 	    	_xmlResponse.AppendChild(rootNode);
+			StatusCode = 200;
 	    	return _xmlResponse.InnerXml;
 		}
 		

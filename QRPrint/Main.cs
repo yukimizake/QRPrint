@@ -5,7 +5,7 @@ namespace QRPrint
 	class MainClass
 	{
 		public static PrinterHandler printerHandler;
-		
+		public static bool serverRunning = true;
 		
 		public static void Main (string[] args)
 		{	
@@ -16,10 +16,17 @@ namespace QRPrint
 			WebServer server = new WebServer(serverString);
 			Console.WriteLine("Server " + hostname + " started on port " + portNumber);
 			
-			printerHandler = new PrinterHandler("/dev/tty.usbserial-A600dP3F",9600);
+			printerHandler = new PrinterHandler(
+				(string)AppConfig.GetValue("SerialPortName"),
+				(int)AppConfig.GetValue("SerialPortBaudRate")
+				);
 			
 			server.Start();
-			Console.ReadLine();
+			
+			while (serverRunning) {
+				System.Threading.Thread.Sleep(1000);
+			}
+			
 			server.Stop();
 		}
 	}

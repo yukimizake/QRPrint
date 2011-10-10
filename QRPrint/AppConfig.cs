@@ -4,14 +4,14 @@ namespace QRPrint
 {
 	public struct AppConfig
 	{
-		public static string GetValue(string ID)
+		public static object GetValue(string ID)
 		{
-			switch (ID.ToLower())
+			switch (ID)
 			{
 			case "SerialPortName" :
-				return "/dev/ttyUSB0";
+				return "/dev/tty.usbserial-A600dP3F";
 			case "SerialPortBaudRate" :
-				return "9600";
+				return 9600;
 			default:
 				return "";
 			}
