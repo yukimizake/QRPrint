@@ -11,7 +11,7 @@ namespace QRPrint
 			case "SerialPortName" :
 				return "/dev/tty.usbserial-A600dP3F";
 			case "SerialPortBaudRate" :
-				return 9600;
+				return 14400;
 			default:
 				return "";
 			}

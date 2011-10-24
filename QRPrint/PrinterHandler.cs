@@ -27,7 +27,7 @@ namespace QRPrint
 			_serialPort = new SerialPort(_serialPortName,_serialBaudRate);
 			_serialPort.Open();
 			printer = new ThermalPrinter(_serialPort,2,180,1);
-			printer.PictureLineSleepTimeMs = 60;
+			printer.PictureLineSleepTimeMs = 1;
 			//TODO reading printer config
 		}
 		
